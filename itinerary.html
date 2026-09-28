@@ -1,0 +1,725 @@
+<title>NYC + Jersey City, Oct 11–19</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#F2F4F6; --paper:#FFFFFF; --ink:#131C26; --muted:#56626F; --line:#D5DBE1;
+  --accent:#1D4F8C; --accent-soft:#E3ECF7; --taxi:#F2B705; --taxi-soft:#FFF4CC;
+  --warn:#9A3412; --warn-soft:#FDEBDD; --ok:#166534; --ok-soft:#E0F2E6;
+  --opt:#6B7280;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0F151C; --paper:#17202A; --ink:#E7ECF1; --muted:#9AA7B4; --line:#2A3643;
+    --accent:#8DB6EA; --accent-soft:#1B2B40; --taxi:#F2B705; --taxi-soft:#3A3010;
+    --warn:#F4A37A; --warn-soft:#3A2016; --ok:#86D39C; --ok-soft:#15301E; --opt:#9AA3AE;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0F151C; --paper:#17202A; --ink:#E7ECF1; --muted:#9AA7B4; --line:#2A3643;
+  --accent:#8DB6EA; --accent-soft:#1B2B40; --taxi:#F2B705; --taxi-soft:#3A3010;
+  --warn:#F4A37A; --warn-soft:#3A2016; --ok:#86D39C; --ok-soft:#15301E; --opt:#9AA3AE;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.6 "IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;padding:0 16px}
+.wrap{max-width:980px;margin:0 auto;padding-block:28px 80px}
+h1,h2,h3,h4{font-family:"Archivo Narrow","Arial Narrow",Arial,sans-serif;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(34px,6vw,54px);font-weight:700;letter-spacing:-.01em}
+h2{font-size:28px;font-weight:700;margin-bottom:14px}
+h3{font-size:21px;font-weight:600}
+h4{font-size:16px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:18px 0 8px}
+p{margin:0 0 10px;max-width:70ch}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:13px}
+.muted{color:var(--muted)}
+.eyebrow{font:500 12px/1 "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+header.top{display:grid;gap:12px;margin-bottom:22px}
+.strip{height:8px;border-radius:4px;background:linear-gradient(90deg,#0039A6 0 14%,#FF6319 14% 28%,#00933C 28% 42%,#FCCC0A 42% 56%,#EE352E 56% 70%,#B933AD 70% 84%,#A7A9AC 84% 100%)}
+nav.days{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding:10px 0;display:flex;gap:6px;overflow-x:auto;border-bottom:1px solid var(--line);margin-bottom:24px}
+nav.days a{flex:none;text-decoration:none;color:var(--ink);font:500 13px "IBM Plex Mono",monospace;padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:var(--paper)}
+nav.days a:hover{border-color:var(--accent);color:var(--accent)}
+section{margin:0 0 44px;scroll-margin-top:64px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:20px}
+.grid2{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.grid3{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.zone{border-left:4px solid var(--z,#999);padding:4px 0 4px 12px}
+.zone b{display:block;font-family:"Archivo Narrow",Arial,sans-serif;font-size:17px}
+.flag{background:var(--warn-soft);border-radius:8px;padding:12px 14px;margin:10px 0}
+.flag b{color:var(--warn)}
+.tip{background:var(--accent-soft);border-radius:8px;padding:12px 14px;margin:10px 0}
+.good{background:var(--ok-soft);border-radius:8px;padding:12px 14px;margin:10px 0}
+.good b{color:var(--ok)}
+ul.clean{margin:0;padding-left:18px}
+ul.clean li{margin:3px 0}
+/* day */
+.day{background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.dayhead{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:baseline;padding:18px 20px;border-bottom:1px solid var(--line)}
+.dayhead .date{font:700 30px/1 "Archivo Narrow",Arial,sans-serif;color:var(--accent)}
+.dayhead h3{flex:1 1 300px}
+.who{font:500 12px "IBM Plex Mono",monospace;color:var(--muted)}
+.daybody{padding:6px 20px 20px}
+ol.tl{list-style:none;margin:10px 0 0;padding:0}
+ol.tl li{display:grid;grid-template-columns:78px 1fr;gap:12px;padding:9px 0;border-top:1px dashed var(--line)}
+ol.tl li:first-child{border-top:0}
+ol.tl time{font:500 13px/1.6 "IBM Plex Mono",monospace;color:var(--muted);font-variant-numeric:tabular-nums}
+ol.tl .t{font-weight:600}
+ol.tl .d{color:var(--muted);font-size:14px;margin-top:2px}
+ol.tl li.move .t{font-weight:500;color:var(--accent)}
+ol.tl li.opt .t::after{content:"OPTIONAL";font:500 10px "IBM Plex Mono",monospace;letter-spacing:.08em;margin-left:8px;padding:1px 6px;border:1px solid var(--opt);color:var(--opt);border-radius:4px;vertical-align:2px}
+ol.tl li.key{background:var(--taxi-soft);margin:0 -20px;padding-left:20px;padding-right:20px}
+.pass{font:600 10px "IBM Plex Mono",monospace;letter-spacing:.06em;background:var(--taxi);color:#1a1400;padding:1px 6px;border-radius:4px;margin-left:6px;vertical-align:2px}
+.res{font:600 10px "IBM Plex Mono",monospace;letter-spacing:.06em;background:var(--warn);color:var(--paper);padding:1px 6px;border-radius:4px;margin-left:6px;vertical-align:2px}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px 18px;margin-top:16px;padding-top:14px;border-top:2px solid var(--ink)}
+.facts div{font-size:14px}
+.facts dt{font:500 11px "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.facts dd{margin:2px 0 0}
+/* transit bullets */
+.ln{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 4px;border-radius:999px;font:700 12px/1 Arial,Helvetica,sans-serif;color:#fff;vertical-align:1px;margin:0 1px}
+.l1{background:#EE352E}.l6{background:#00933C}.l7{background:#B933AD}.lA{background:#0039A6}.lB{background:#FF6319}.lN{background:#FCCC0A;color:#111}.lL{background:#A7A9AC;color:#111}.lG{background:#6CBE45}
+.sys{display:inline-block;font:700 11px/1 Arial,Helvetica,sans-serif;letter-spacing:.04em;padding:4px 6px;border-radius:4px;color:#fff;vertical-align:1px}
+.PATH{background:#0B4EA2}.LIRR{background:#1F3B73}.AIR{background:#4B5563}.NJT{background:#1A1A1A}.FERRY{background:#0E7490}.CAR{background:#111;color:var(--taxi)}.NJB{background:#6B21A8}
+table{border-collapse:collapse;width:100%;font-size:14px}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--paper)}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:600 12px "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);background:var(--bg)}
+tr:last-child td{border-bottom:0}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.route{counter-reset:s;list-style:none;padding:0;margin:6px 0 0;display:flex;flex-wrap:wrap;gap:6px}
+.route li{counter-increment:s;font-size:13px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:4px 8px}
+.route li::before{content:counter(s) ". ";font-family:"IBM Plex Mono",monospace;color:var(--muted)}
+.copy{font:500 12px "IBM Plex Mono",monospace;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:6px;padding:4px 10px;cursor:pointer;margin-top:8px}
+.copy:hover{border-color:var(--accent)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px;color:var(--muted)}
+@media (max-width:560px){
+  ol.tl li{grid-template-columns:62px 1fr;gap:8px}
+  .daybody{padding:4px 14px 16px}.dayhead{padding:14px}
+  ol.tl li.key{margin:0 -14px;padding-left:14px;padding-right:14px}
+}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+
+<div class="wrap">
+<header class="top">
+  <div class="strip" aria-hidden="true"></div>
+  <span class="eyebrow">Family trip · Salt Lake City &amp; Mexico City → New York · checked Sep 28, 2026</span>
+  <h1>New York + Jersey City, October 11–19</h1>
+  <p class="muted">Base: 487 Bergen Ave, Jersey City (Bergen-Lafayette). 5 travelers Oct 11–13, 7 from Oct 14. Harry Styles at MSG Wed Oct 14. Mom’s birthday Fri Oct 16. Sunrise ≈ 7:03–7:11 AM, sunset ≈ 6:22–6:10 PM across the week.</p>
+  <div class="legend">
+    <span><span class="pass">GO CITY</span> uses a pass choice</span>
+    <span><span class="res">BOOK</span> needs a reservation</span>
+    <span><span class="sys PATH">PATH</span> <span class="ln lA">A</span> <span class="ln l1">1</span> transit lines</span>
+  </div>
+</header>
+
+<nav class="days" aria-label="Jump to">
+  <a href="#strategy">Strategy</a><a href="#d11">Sun 11</a><a href="#d12">Mon 12</a><a href="#d13">Tue 13</a><a href="#d14">Wed 14</a><a href="#d15">Thu 15</a><a href="#d16">Fri 16</a><a href="#d17">Sat 17</a><a href="#d18">Sun 18</a><a href="#d19">Mon 19</a><a href="#gocity">Go City</a><a href="#book">Book now</a><a href="#airports">Airports</a><a href="#transit">Transit</a><a href="#costs">Costs</a><a href="#nofit">Didn’t fit</a><a href="#rain">Rain plan</a><a href="#fixes">List fixes</a><a href="#maps">Maps routes</a>
+</nav>
+
+<!-- STRATEGY -->
+<section id="strategy">
+  <h2>Trip strategy</h2>
+  <p>Each day covers one area, so you never cross the city twice in a day. The pass-heavy museum and observation-deck days come first (Oct 12–13), before your older brother arrives. From Oct 14 on, the days are things all seven of you will enjoy together: walking, food, shopping, the bridge and the harbor. Mom’s birthday stays on the New Jersey side, close to both the Airbnb and the restaurant.</p>
+  <div class="grid3" style="margin:16px 0">
+    <div class="zone" style="--z:#FF6319"><b>Sun 11 · Chelsea &amp; Hudson Yards</b>Close to Penn Station, where the luggage and your parents are. Kept gentle after the red-eye.</div>
+    <div class="zone" style="--z:#0039A6"><b>Mon 12 · Lower Manhattan + West Side piers</b>9/11 Memorial, Wall St, Battery Park, Circle Line, Empire State at night.</div>
+    <div class="zone" style="--z:#00933C"><b>Tue 13 · Museum Mile to Midtown</b>The Met (1 hr), AMNH, the Central Park movie walk, Top of the Rock at sunset.</div>
+    <div class="zone" style="--z:#B933AD"><b>Wed 14 · Midtown 42nd St → MSG</b>Grand Central, NYPL, 5th Ave, Rockefeller. Then Herald Square and the concert. Nothing far away.</div>
+    <div class="zone" style="--z:#EE352E"><b>Thu 15 · Flatiron → Village</b>A late start after the concert. Harry Potter, Caffè Panna, Strand, Washington Sq, West Village, jazz.</div>
+    <div class="zone" style="--z:#0E7490"><b>Fri 16 · Jersey City (birthday)</b>Statue of Liberty &amp; Ellis Island by ferry from Liberty State Park, then rest, then Maddy Rose.</div>
+    <div class="zone" style="--z:#FCCC0A"><b>Sat 17 · Brooklyn</b>Brooklyn Bridge at sunrise, DUMBO, Brooklyn Heights, then ferry to Greenpoint and Williamsburg.</div>
+    <div class="zone" style="--z:#A7A9AC"><b>Sun 18 · Chinatown, Little Italy, Nolita</b>Checkout day. Dim sum, Canal St bags, cannoli, the Harry pop-up. Bags wait at the hotel.</div>
+    <div class="zone" style="--z:#6CBE45"><b>Mon 19 · Departures</b>EWR at 3:35 AM for you two. JFK in the afternoon for your parents.</div>
+  </div>
+  <div class="good"><b>Go City in one line:</b> buy a 6-choice <b>Explorer</b> pass (not All-Inclusive) for the five of you. The choices are the 9/11 Museum, Empire State, Top of the Rock, AMNH, the Statue/Ellis ferry and the Circle Line. It activates on Mon Oct 12 and covers the Statue trip on Fri Oct 16. Details are in <a href="#gocity">Go City strategy</a>.</div>
+  <div class="flag"><b>Three gaps in the plan you need to solve:</b>
+    <ul class="clean">
+      <li><b>Night of Oct 18:</b> the Airbnb ends at 10 AM on Oct 18, but your parents and brother don’t fly until 6:27 PM on Oct 19. They need a bed that night. I recommend one hotel near Grove St or Journal Square PATH for them, plus a room for you two to sleep in until 3 AM (see <a href="#airports">Airports</a>).</li>
+      <li><b>Older brother’s departure</b> wasn’t given. His plan ends at Oct 18 checkout.</li>
+      <li><b>Concert tickets:</b> I assumed only you and your husband go. If others have tickets, they follow your Oct 14 afternoon.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- OCT 11 -->
+<section id="d11">
+<article class="day">
+  <div class="dayhead"><span class="date">Sun Oct 11</span><h3>Arrival · Chelsea, Hudson Yards, Times Square</h3><span class="who">You + husband all day · parents &amp; brother from ~5 PM</span></div>
+  <div class="daybody">
+  <ol class="tl">
+    <li class="key"><time>6:30</time><div><div class="t">Land at JFK Terminal 5</div><div class="d">Allow about 15 min to deplane, plus 20–30 min if you checked bags. Use the restrooms and buy coffee airside.</div></div></li>
+    <li class="move"><time>7:20</time><div><div class="t"><span class="sys AIR">AirTrain</span> T5 → Jamaica, then <span class="sys LIRR">LIRR</span> → Penn Station</div><div class="d">The AirTrain takes about 12 min and costs $8.50, paid when you exit at Jamaica (tap a card). At Jamaica, take any LIRR train to <b>Penn Station</b>. It takes about 20 min, runs every 10–15 min on Sunday mornings, and a weekend CityTicket is about $5 in the TrainTime app. The cheaper option is the <span class="ln lA">E</span> train from Jamaica for $3, which takes about 50 min and is fine if you packed light.</div></div></li>
+    <li><time>8:20</time><div><div class="t">Store luggage near Penn Station / Herald Square <span class="res">BOOK</span></div><div class="d">Book a Bounce (or LuggageHero / Radical Storage) spot within 2–3 blocks of the <b>33rd St PATH</b> entrance (6th Ave &amp; 33rd). It must be open until at least 9 PM Sunday, because your parents will add their bags there tonight. Bounce lists a 24/7 Penn Station location. Prices run about $6–10 per bag per day.</div></div></li>
+    <li><time>8:40</time><div><div class="t">Breakfast at Moynihan Train Hall</div><div class="d">Moynihan is at 8th Ave &amp; 31st–33rd. The food hall has seats and clean restrooms, and it’s where you’ll meet your parents later.</div></div></li>
+    <li class="move"><time>9:30</time><div><div class="t">Walk to Hudson Yards · 10 min</div></div></li>
+    <li><time>9:45</time><div><div class="t">Vessel + Hudson Yards · 30–45 min</div><div class="d">Photos outside. Climbing now needs a timed ticket (check the Hudson Yards site). Edge is optional today (see below).</div></div></li>
+    <li class="opt"><time>10:15</time><div><div class="t">Edge observation deck · 60 min</div><div class="d">Skip Edge if you’re tired. The plan already has Empire State and Top of the Rock. If you do go, it uses a 7th pass choice.</div></div></li>
+    <li><time>10:45</time><div><div class="t">High Line, 34th St → Gansevoort · 60–75 min</div><div class="d">1.45 mi of elevated park with plenty of benches.</div></div></li>
+    <li><time>12:00</time><div><div class="t">Lunch at Chelsea Market (9th Ave &amp; 15th) · 60 min</div><div class="d">Los Tacos No. 1 is inside. Your parents will enjoy it later too, but it’s a safe first-day lunch.</div></div></li>
+    <li><time>1:15</time><div><div class="t">Pier 57 + Little Island · 60 min</div><div class="d">Pier 57 has a free rooftop park and the Market 57 food hall. Little Island is a 4-min walk south. Both are good for sitting in the sun.</div></div></li>
+    <li class="move"><time>2:30</time><div><div class="t">Back to Penn: <span class="ln lA">A</span><span class="ln lA">C</span><span class="ln lA">E</span> 14 St → 34 St–Penn · 15 min</div></div></li>
+    <li><time>2:45</time><div><div class="t">Slow afternoon near Penn</div><div class="d">Rest in Moynihan’s seating, or browse Macy’s Herald Square. Keep this block loose until your parents text that they’re through customs.</div></div></li>
+    <li class="key"><time>~3:30–4:15</time><div><div class="t">Parents + brother clear immigration at T4</div><div class="d">They land at 2:10 PM. Expect them to be through immigration and baggage claim around 3:30–4:00 PM (as late as 4:30 on a busy Sunday). They take the AirTrain from T4 to Jamaica, then the LIRR to <b>Penn Station</b> (not Grand Central). Send them this page’s <a href="#airports">Airports</a> section.</div></div></li>
+    <li class="key"><time>~4:45–5:15</time><div><div class="t">Meet at Moynihan Train Hall, under the big clock</div><div class="d">Walk them to the storage spot. They drop their bags and keep only small bags.</div></div></li>
+    <li class="move"><time>5:40</time><div><div class="t">Walk to Times Square · 10 min</div></div></li>
+    <li><time>5:50</time><div><div class="t">Times Square at dusk · 45 min</div><div class="d">Sunset is 6:22 PM, and the signs look best around 6:30. The I LOVE NY Gift Shop is at 729 7th Ave (49th St).</div></div></li>
+    <li><time>7:00</time><div><div class="t">Dinner in Koreatown (32nd St, Broadway–5th) · 75 min</div><div class="d">It’s 5 min from the bags, fast and good for a group. BCD Tofu House (5 W 32nd) is a good choice for your parents.</div></div></li>
+    <li class="move"><time>8:30</time><div><div class="t">Get the bags → <span class="sys PATH">PATH</span> 33rd St → Journal Square</div><div class="d">On weekends this line runs <i>via Hoboken</i> and takes about 35–40 min. Then take 2 Ubers from Journal Square to the Airbnb (about 5 min, $10–15 each). Five people with suitcases won’t fit in one car.</div></div></li>
+    <li><time>~9:30</time><div><div class="t">Check in at the Airbnb</div></div></li>
+  </ol>
+  <dl class="facts">
+    <div><dt>Walking</dt><dd>About 5–6 mi for you two, 1 mi for parents</dd></div>
+    <div><dt>Transit</dt><dd>AirTrain, LIRR, subway, PATH, Uber for the last mile with bags</dd></div>
+    <div><dt>Go City</dt><dd>None (Edge optional)</dd></div>
+    <div><dt>Book</dt><dd>Luggage storage for 5 people’s bags</dd></div>
+    <div><dt>Skippable</dt><dd>Edge, Little Island, Macy’s</dd></div>
+    <div><dt>Home by</dt><dd>~9:30 PM</dd></div>
+  </dl>
+  </div>
+</article>
+</section>
+
+<!-- OCT 12 -->
+<section id="d12">
+<article class="day">
+  <div class="dayhead"><span class="date">Mon Oct 12</span><h3>Lower Manhattan, the harbor, Empire State at night</h3><span class="who">5 travelers · Go City day 1 · Columbus Day (museums open, some crowds)</span></div>
+  <div class="daybody">
+  <ol class="tl">
+    <li><time>7:30</time><div><div class="t">Wake up</div></div></li>
+    <li class="move"><time>8:35</time><div><div class="t">Leave → Journal Square → <span class="sys PATH">PATH</span> Newark–WTC line → World Trade Center</div><div class="d">To reach Journal Square, walk about 25 min, take NJ Transit bus 80 or 87 along Bergen Ave, or take a short Uber. The PATH ride is about 15 min.</div></div></li>
+    <li><time>9:15</time><div><div class="t">9/11 Memorial pools · 20 min · free</div></div></li>
+    <li><time>9:45</time><div><div class="t">9/11 Memorial &amp; Museum · 2 hrs <span class="pass">GO CITY</span><span class="res">BOOK</span></div><div class="d">Timed entry, reserved in the Go City app. The museum is <b>closed Tuesdays</b>, which is why it’s today.</div></div></li>
+    <li><time>11:45</time><div><div class="t">Oculus + I LOVE NY Gifts (inside Westfield WTC) · 20 min</div></div></li>
+    <li><time>12:10</time><div><div class="t">Lunch at Eataly Downtown (4 WTC) or Hudson Eats (Brookfield Place) · 60 min</div></div></li>
+    <li class="move"><time>1:15</time><div><div class="t">Walk to Wall Street · 10 min</div></div></li>
+    <li><time>1:25</time><div><div class="t">Wall St · NYSE · Federal Hall · Fearless Girl · Charging Bull · 45 min</div><div class="d">The Bull is at Bowling Green and always has a line. Try the photo from its side.</div></div></li>
+    <li><time>2:15</time><div><div class="t">Battery Park · 30 min</div><div class="d">See Castle Clinton and the SeaGlass Carousel, with your first look at Lady Liberty. You visit her on Friday from the New Jersey side.</div></div></li>
+    <li class="move"><time>2:50</time><div><div class="t"><span class="ln l1">1</span> South Ferry → Times Sq–42 St, then walk west or take the M42 bus · ~45 min</div></div></li>
+    <li><time>~4:00</time><div><div class="t">Circle Line Landmarks Cruise, Pier 83 (W 42nd) · 90 min <span class="pass">GO CITY</span><span class="res">BOOK</span></div><div class="d">Book the latest afternoon departure so you’re on the water near sunset (6:21 PM). It covers the Statue, the bridges and the skyline. If you’re tired, skip it and go straight to dinner.</div></div></li>
+    <li class="opt"><time>—</time><div><div class="t">Swap: Intrepid Museum, Pier 86 · 60–90 min</div><div class="d">Do this instead of the cruise if you prefer. It’s next door, open 10–5, and also a pass choice.</div></div></li>
+    <li><time>6:15</time><div><div class="t">Dinner in Hell’s Kitchen (9th Ave, 42nd–50th) · 75 min</div></div></li>
+    <li class="move"><time>7:40</time><div><div class="t">Walk or take the M34 bus to the Empire State Building · 20 min</div></div></li>
+    <li><time>8:00</time><div><div class="t">Empire State Building at night · 75 min <span class="pass">GO CITY</span><span class="res">BOOK</span></div><div class="d">Night views complement tomorrow’s sunset at Top of the Rock.</div></div></li>
+    <li class="move"><time>9:20</time><div><div class="t">Walk 2 blocks to the <span class="sys PATH">PATH</span> at 33rd St → Journal Square · 25 min</div><div class="d">On weekdays before about 11 PM this line runs direct.</div></div></li>
+  </ol>
+  <dl class="facts">
+    <div><dt>Walking</dt><dd>About 6 mi</dd></div>
+    <div><dt>Transit</dt><dd>PATH, <span class="ln l1">1</span> train, bus or walk</dd></div>
+    <div><dt>Go City</dt><dd>9/11 Museum, Circle Line (or Intrepid), Empire State</dd></div>
+    <div><dt>Book</dt><dd>All three timed slots in the Go City app</dd></div>
+    <div><dt>Skippable</dt><dd>Circle Line, Oculus shopping</dd></div>
+    <div><dt>Home by</dt><dd>~10:00 PM</dd></div>
+  </dl>
+  </div>
+</article>
+</section>
+
+<!-- OCT 13 -->
+<section id="d13">
+<article class="day">
+  <div class="dayhead"><span class="date">Tue Oct 13</span><h3>The Met, AMNH, Central Park movie walk, Top of the Rock</h3><span class="who">5 travelers · Go City day 2</span></div>
+  <div class="daybody">
+  <ol class="tl">
+    <li><time>7:45</time><div><div class="t">Wake up</div></div></li>
+    <li class="move"><time>8:50</time><div><div class="t"><span class="sys PATH">PATH</span> JSQ → 33rd St, walk to Park Ave, <span class="ln l6">6</span> 33 St → 86 St, walk west · ~65 min door to door</div></div></li>
+    <li class="opt"><time>—</time><div><div class="t">Alternative morning: St. John the Divine + Perfect Picnic</div><div class="d">Take the <span class="ln l1">1</span> to Cathedral Pkwy–110 St for the cathedral (45 min). Then walk 10 min to pick up the Perfect Picnic at 405 Central Park West (opens 10 AM) and carry it for lunch. Doing this means cutting the Met.</div></div></li>
+    <li><time>10:00</time><div><div class="t">The Metropolitan Museum of Art · 1 hr max</div><div class="d">Adults pay $30 and seniors $22. Pay-what-you-wish is <b>only for New York State residents and NY/NJ/CT students</b>, so it doesn’t apply to you. The Fri/Sat late hours (until 9 PM) are not free. The Met is <b>closed Wednesdays</b>. Suggested route: Temple of Dendur, the Arms &amp; Armor hall, then the European Paintings highlights.</div></div></li>
+    <li><time>11:00</time><div><div class="t">Walk across the park · 35 min</div><div class="d">Cleopatra’s Needle, the Great Lawn, Belvedere Castle, Turtle Pond. Exit at W 79th St.</div></div></li>
+    <li><time>11:40</time><div><div class="t">American Museum of Natural History · 2 hrs <span class="pass">GO CITY</span></div><div class="d">Blue whale, dinosaur halls, Gilder Center. Eat lunch after, not inside.</div></div></li>
+    <li><time>1:45</time><div><div class="t">Lunch: Shake Shack (Columbus &amp; 77th) or Jacob’s Pickles (Amsterdam &amp; 84th) · 50 min</div></div></li>
+    <li><time>2:40</time><div><div class="t">Levain Bakery, 167 W 74th · 20 min</div><div class="d">The original shop. Buy the chocolate chip walnut and carry it into the park.</div></div></li>
+    <li><time>3:05</time><div><div class="t">Central Park movie walk, south-east through the park · ~90 min</div><div class="d">Strawberry Fields (Imagine) → Bethesda Terrace &amp; Fountain → Bow Bridge → The Mall / Literary Walk → Wollman Rink → <b>Gapstow Bridge &amp; The Pond</b> (Home Alone 2) → exit at 59th &amp; 5th.</div></div></li>
+    <li><time>4:35</time><div><div class="t">The Plaza Hotel · 15 min</div><div class="d">The Home Alone 2 hotel. Take photos outside and look into the lobby. This is probably the “grand hotel” you meant.</div></div></li>
+    <li><time>4:50</time><div><div class="t">Fifth Avenue, 59th → 50th · 40 min</div><div class="d">Bergdorf, Tiffany, Trump Tower, the big flagships.</div></div></li>
+    <li class="key"><time>5:45</time><div><div class="t">Top of the Rock at sunset · 75 min <span class="pass">GO CITY</span><span class="res">BOOK</span></div><div class="d">Sunset is at 6:19 PM. Book a 5:30–5:45 slot the moment you can, because sunset slots sell out first. Stay until the lights come on. The view here includes the Empire State Building and Central Park.</div></div></li>
+    <li class="opt"><time>7:10</time><div><div class="t">The Rink at Rockefeller Center · 45 min</div><div class="d">The rink opened Oct 10, 2026, and admission starts at about $22. It’s a Go City attraction but not worth a pass choice.</div></div></li>
+    <li><time>7:30</time><div><div class="t">Dinner in Midtown, or Joe’s Pizza Broadway (1435 Broadway at 40th)</div></div></li>
+    <li class="move"><time>8:45</time><div><div class="t">Walk to 33rd St <span class="sys PATH">PATH</span> → Journal Square</div></div></li>
+  </ol>
+  <dl class="facts">
+    <div><dt>Walking</dt><dd>About 6.5–7 mi</dd></div>
+    <div><dt>Transit</dt><dd>PATH, <span class="ln l6">6</span> train</dd></div>
+    <div><dt>Go City</dt><dd>AMNH, Top of the Rock</dd></div>
+    <div><dt>Book</dt><dd>Top of the Rock sunset slot</dd></div>
+    <div><dt>Skippable</dt><dd>Levain line, the Rink, 5th Ave stretch</dd></div>
+    <div><dt>Home by</dt><dd>~9:45 PM</dd></div>
+  </dl>
+  </div>
+</article>
+</section>
+
+<!-- OCT 14 -->
+<section id="d14">
+<article class="day">
+  <div class="dayhead"><span class="date">Wed Oct 14</span><h3>42nd Street &amp; Rockefeller, then Harry Styles at MSG</h3><span class="who">All 7 until ~3 PM · concert: you + husband</span></div>
+  <div class="daybody">
+  <div class="tip"><b>Older brother &amp; wife (land JFK ~6:30 AM):</b> take the AirTrain to Jamaica, then the LIRR to <b>Penn Station</b> (about 70–80 min total with bags). Leave bags at the same storage spot you used on Oct 11, then have breakfast at Moynihan. Meet the family at <b>9:10 AM at the Macy’s corner, 34th &amp; Broadway</b>. If they’re wrecked from the red-eye, they can go straight to the Airbnb instead: <span class="sys PATH">PATH</span> 33rd St → Journal Square, then Uber (about 75 min from Penn). They then join everyone on Thursday.</div>
+  <ol class="tl">
+    <li><time>7:30</time><div><div class="t">Wake up</div></div></li>
+    <li class="move"><time>8:30</time><div><div class="t"><span class="sys PATH">PATH</span> JSQ → 33rd St · ~40 min incl. getting to JSQ</div></div></li>
+    <li class="key"><time>9:10</time><div><div class="t">Meet brother &amp; wife at Herald Square, then walk to Grand Central · 18 min</div></div></li>
+    <li><time>9:30</time><div><div class="t">Grand Central Terminal + Whispering Gallery · 45 min</div><div class="d">The Whispering Gallery is the tiled arch outside the Oyster Bar on the lower level. Stand in opposite corners and whisper into the wall. Step out to Lexington &amp; 42nd for the Chrysler Building view.</div></div></li>
+    <li class="opt"><time>10:30</time><div><div class="t">Morgan Library, Madison &amp; 36th · 45 min</div><div class="d">It opens at 10:30 and is closed Mondays. It’s paid separately (about $25). Anyone not into museums can get coffee in Bryant Park instead.</div></div></li>
+    <li><time>11:25</time><div><div class="t">New York Public Library, 5th &amp; 42nd · 35 min</div><div class="d">See the lions, Astor Hall and the Rose Main Reading Room. It’s free.</div></div></li>
+    <li><time>12:00</time><div><div class="t">Bryant Park · 20 min</div></div></li>
+    <li><time>12:30</time><div><div class="t">Walk up Fifth Ave to 50th · lunch at the Rockefeller Center Concourse · 60 min</div></div></li>
+    <li><time>1:40</time><div><div class="t">St. Patrick’s Cathedral · 30 min</div><div class="d">It’s free. The Lotte New York Palace (Gossip Girl’s hotel) is right behind it on Madison.</div></div></li>
+    <li><time>2:10</time><div><div class="t">Ralph’s Coffee truck · Atlas statue · Channel Gardens · Nintendo NY · LEGO Store · 50 min</div><div class="d">The truck’s listed spot is 5th Ave between 50th &amp; 51st (Atlas Court), open 8 AM–6 PM, though it may not be there every day. Nintendo NY is at 10 Rockefeller Plaza and sometimes has a queue to get in.</div></div></li>
+    <li class="key"><time>3:00</time><div><div class="t">Split up</div><div class="d"><b>Parents, younger brother, older brother &amp; wife:</b> take the <span class="ln lB">B</span><span class="ln lB">D</span><span class="ln lB">F</span><span class="ln lB">M</span> from 47–50 Sts to 34 St–Herald Sq, collect the bags, then <span class="sys PATH">PATH</span> → JSQ → Uber. They’re home by about 4:15 to nap. <b>You two:</b> stay in Herald Square.</div></div></li>
+    <li><time>3:15</time><div><div class="t">Primark flagship (150 W 34th) · Macy’s · I LOVE NY (1282 Broadway) · 90 min</div><div class="d">Primark opened here in May 2026 and is open 9 AM–10 PM, one block from MSG.</div></div></li>
+    <li><time>4:45</time><div><div class="t">Rest at Moynihan Train Hall · 30 min</div></div></li>
+    <li><time>5:15</time><div><div class="t">Early dinner in Koreatown · 60 min</div><div class="d">Eat by 6:15. Food inside MSG is expensive and the lines are long.</div></div></li>
+    <li class="key"><time>6:30</time><div><div class="t">Arrive at MSG · doors 7:00 PM</div><div class="d">Jamie xx goes on around 8:00 and Harry between about 9:00 and 9:15, with a show of roughly 2 hours (Time Out). The closest entrance from Koreatown and the PATH is the <b>7th Ave / Chase Square entrance (7th Ave &amp; 32nd)</b>. The 8th Ave entrances A–D (at 31st and 33rd) sit over Penn Station. Every entrance reaches the 200 level by escalator, so use whichever entrance your ticket suggests. In Section 210, the tunnel is at row 7. Check msg.com’s bag policy the day before, since only small bags are allowed.</div></div></li>
+    <li class="move"><time>~11:15</time><div><div class="t">Walk out the 7th Ave side to the <span class="sys PATH">PATH</span> at 33rd St (6th Ave) · 5 min</div><div class="d">Expect a crowd. After about 11 PM the line may run <i>via Hoboken</i>, which takes about 35–40 min. Then take an Uber from JSQ. Avoid calling an Uber at MSG, where surge pricing and gridlock are common.</div></div></li>
+    <li><time>~12:30 AM</time><div><div class="t">Home</div></div></li>
+  </ol>
+  <dl class="facts">
+    <div><dt>Walking</dt><dd>About 4.5 mi (parents), 5 mi (you)</dd></div>
+    <div><dt>Transit</dt><dd>PATH, <span class="ln lB">B</span><span class="ln lB">D</span><span class="ln lB">F</span><span class="ln lB">M</span>, late Uber from JSQ</dd></div>
+    <div><dt>Go City</dt><dd>None (skip the MSG tour on a show day)</dd></div>
+    <div><dt>Book</dt><dd>Brother’s bag storage, Morgan (optional)</dd></div>
+    <div><dt>Skippable</dt><dd>Morgan, Nintendo line, Macy’s</dd></div>
+    <div><dt>Home by</dt><dd>~4:15 PM (family) · ~12:30 AM (you two)</dd></div>
+  </dl>
+  </div>
+</article>
+</section>
+
+<!-- OCT 15 -->
+<section id="d15">
+<article class="day">
+  <div class="dayhead"><span class="date">Thu Oct 15</span><h3>Flatiron → Union Square → Greenwich &amp; West Village → jazz</h3><span class="who">All 7 · late start after the concert</span></div>
+  <div class="daybody">
+  <ol class="tl">
+    <li><time>9:00</time><div><div class="t">Sleep in</div></div></li>
+    <li class="move"><time>10:35</time><div><div class="t"><span class="sys PATH">PATH</span> JSQ → 23rd St (6th Ave) · ~35 min incl. getting to JSQ</div></div></li>
+    <li><time>11:10</time><div><div class="t">Flatiron Building + Madison Square Park · 20 min</div></div></li>
+    <li><time>11:30</time><div><div class="t">Harry Potter New York, 935 Broadway · 45 min <span class="pass">GO CITY</span></div><div class="d">The Butterbeer Experience (one drink) needs no booking. Pay cash rather than spend a pass choice, since it’s cheap.</div></div></li>
+    <li><time>12:15</time><div><div class="t">LEGO Store Flatiron, 200 5th Ave · 20 min</div></div></li>
+    <li><time>12:40</time><div><div class="t">Somedays Bakery, 297 Park Ave S · 25 min</div><div class="d">A light pastry lunch.</div></div></li>
+    <li><time>1:15</time><div><div class="t">Caffè Panna, 77 Irving Pl · 30 min</div><div class="d">Expect a line, and eat on Irving Place. There’s also a Brooklyn shop, so you have a second chance on Saturday.</div></div></li>
+    <li><time>1:50</time><div><div class="t">Union Square → Strand Book Store (Broadway &amp; 12th) · 45 min</div></div></li>
+    <li><time>2:45</time><div><div class="t">Washington Square Park · 30 min</div><div class="d">The arch, the fountain and street musicians.</div></div></li>
+    <li><time>3:25</time><div><div class="t">Joe’s Pizza, 7 Carmine St · 25 min</div><div class="d">The classic spot for the photo, and a $4-ish slice.</div></div></li>
+    <li><time>3:55</time><div><div class="t">Bleecker St stroll → Magnolia Bakery (401 Bleecker) → <b>Carrie Bradshaw’s stoop, 66 Perry St</b> · 40 min</div><div class="d">It’s a private home and the owner has chained the stoop. Take photos from the sidewalk only.</div></div></li>
+    <li><time>4:40</time><div><div class="t">The “Friends” building, 90 Bedford St · 10 min</div><div class="d">An iconic extra that’s right on your route.</div></div></li>
+    <li><time>5:30</time><div><div class="t">Dinner at the Commerce Inn, 50 Commerce St · 90 min <span class="res">BOOK</span></div><div class="d">It’s small and books up on Resy. A table for 7 is hard to get, so if one isn’t available, book 4 + 3 or choose another West Village restaurant.</div></div></li>
+    <li class="key"><time>8:00</time><div><div class="t">Jazz at the Village Vanguard, 178 7th Ave S · 75 min <span class="res">BOOK</span></div><div class="d">It opened in 1935 and has sets around 8 and 10 PM. Reserve on their site, and expect about $40–50 per person plus a drink. Check the age policy if anyone is under 21. Smalls (183 W 10th) is a more casual backup.</div></div></li>
+    <li class="move"><time>9:20</time><div><div class="t">Walk 6 min to the <span class="sys PATH">PATH</span> at Christopher St → JSQ</div></div></li>
+  </ol>
+  <dl class="facts">
+    <div><dt>Walking</dt><dd>About 4.5 mi</dd></div>
+    <div><dt>Transit</dt><dd>PATH only</dd></div>
+    <div><dt>Go City</dt><dd>Butterbeer, if you have spare choices</dd></div>
+    <div><dt>Book</dt><dd>Commerce Inn, Village Vanguard</dd></div>
+    <div><dt>Skippable</dt><dd>LEGO, Strand, Friends building, jazz</dd></div>
+    <div><dt>Home by</dt><dd>~10:15 PM</dd></div>
+  </dl>
+  </div>
+</article>
+</section>
+
+<!-- OCT 16 -->
+<section id="d16">
+<article class="day">
+  <div class="dayhead"><span class="date">Fri Oct 16</span><h3>Mom’s birthday · Statue of Liberty from Jersey City, dinner at Maddy Rose</h3><span class="who">All 7 · stays in New Jersey</span></div>
+  <div class="daybody">
+  <div class="tip">This day uses the best logistics trick of the trip. The Statue of Liberty ferry also leaves from <b>Liberty State Park, Jersey City</b>, about 10 min from your Airbnb. Maddy Rose is inside Liberty House, in the same park. No Manhattan, no PATH, and the lines are shorter than at Battery Park.</div>
+  <ol class="tl">
+    <li><time>8:00</time><div><div class="t">Birthday breakfast at the Airbnb</div></div></li>
+    <li class="move"><time>9:10</time><div><div class="t"><span class="sys CAR">UBER</span> 2 cars → Liberty State Park ferry terminal (CRRNJ Terminal) · ~10 min, $12–20 each</div><div class="d">Two cars are needed because an UberXL seats at most 6.</div></div></li>
+    <li class="key"><time>9:30</time><div><div class="t">Statue of Liberty &amp; Ellis Island ferry · 3.5–4 hrs <span class="pass">GO CITY</span><span class="res">BOOK</span></div><div class="d">Go City lets you book up to 7 days ahead in the app, so book on Oct 9. Choose the Liberty State Park departure. The pass covers island grounds and the museums but not the pedestal or crown. Your older brother and his wife buy regular tickets at statuecitycruises.com (about $25). From New Jersey the order is Ellis Island first, then Liberty Island. Security is airport-style, and the last useful boarding for both islands is around 2 PM.</div></div></li>
+    <li><time>~12:30</time><div><div class="t">Lunch at the Liberty Island café, or back on the mainland</div></div></li>
+    <li class="opt"><time>1:40</time><div><div class="t">Liberty State Park walk · Empty Sky 9/11 memorial · 30 min</div></div></li>
+    <li class="move"><time>2:15</time><div><div class="t"><span class="sys CAR">UBER</span> back to the Airbnb</div></div></li>
+    <li><time>2:30–5:45</time><div><div class="t">Rest, shower, get dressed up</div><div class="d">That’s 3 hours with 7 people and one bathroom setup, so run a shower schedule.</div></div></li>
+    <li class="move"><time>6:00</time><div><div class="t"><span class="sys CAR">UBER</span> 2 cars → Liberty House, 76 Audrey Zapp Dr · ~10 min</div><div class="d">Uber is clearly better tonight. Public transit means a light-rail ride plus a long walk in nice shoes.</div></div></li>
+    <li><time>6:10</time><div><div class="t">Skyline photos on the lawn at dusk</div><div class="d">Sunset is at 6:15 PM. The Manhattan skyline across the water lights up as it gets dark.</div></div></li>
+    <li class="key"><time>6:30</time><div><div class="t">Dinner at Maddy Rose, party of 7 <span class="res">BOOK</span></div><div class="d">I recommend <b>6:30 PM rather than 7:00</b>: you get dusk photos on arrival and watch the skyline light up while you eat. Book on OpenTable or call 201-395-0300. Mention the birthday and ask for a window table. It has Mediterranean seafood, a raw bar and dry-aged steaks. If the party grows to 8 or more, ask about large-party rules, which can include a set menu or deposit.</div></div></li>
+    <li class="move"><time>8:45</time><div><div class="t"><span class="sys CAR">UBER</span> home · ~10 min</div></div></li>
+  </ol>
+  <dl class="facts">
+    <div><dt>Walking</dt><dd>About 2.5–3 mi</dd></div>
+    <div><dt>Transit</dt><dd>Uber (6 short rides) + ferry</dd></div>
+    <div><dt>Go City</dt><dd>Statue &amp; Ellis ferry</dd></div>
+    <div><dt>Book</dt><dd>Maddy Rose 6:30 PM · ferry slot</dd></div>
+    <div><dt>Skippable</dt><dd>Ellis Island museum, park walk</dd></div>
+    <div><dt>Home by</dt><dd>~9:00 PM</dd></div>
+  </dl>
+  </div>
+</article>
+</section>
+
+<!-- OCT 17 -->
+<section id="d17">
+<article class="day">
+  <div class="dayhead"><span class="date">Sat Oct 17</span><h3>Brooklyn Bridge sunrise, DUMBO, Greenpoint, Williamsburg</h3><span class="who">All 7 (sunrise optional for parents)</span></div>
+  <div class="daybody">
+  <div class="tip"><b>Why Saturday:</b> sunrise is at <b>7:09 AM</b>. Thursday means a 5 AM alarm after a 12:30 AM concert night, and Friday is the birthday. Saturday also brings Smorgasburg (Williamsburg, Saturdays 11–6, running through Oct 24). If Saturday’s forecast is bad, swap this day with Thursday.</div>
+  <ol class="tl">
+    <li><time>5:10</time><div><div class="t">Wake up</div></div></li>
+    <li class="move"><time>5:50</time><div><div class="t"><span class="sys CAR">UBER</span> to JSQ → <span class="sys PATH">PATH</span> Newark–WTC line → World Trade Center · ~35 min</div><div class="d">This PATH line runs 24/7. Early on weekends, trains may be 15–20 min apart, so check the RidePATH app. The fallback is an Uber straight to City Hall (about 25 min, $40–60 via the Holland Tunnel).</div></div></li>
+    <li class="move"><time>6:25</time><div><div class="t">Walk to the Brooklyn Bridge entrance (Centre St at City Hall / Park Row) · 12 min</div></div></li>
+    <li class="key"><time>6:40</time><div><div class="t">Walk the bridge from the <b>Manhattan side</b> · 45–60 min with photos</div><div class="d">Walking east, you face the sunrise the whole way and finish in DUMBO for breakfast. First light starts around 6:43. <b>Photo spots:</b> the Manhattan tower’s Gothic arches with the cables fanning out; mid-span looking <i>back</i> at the Lower Manhattan skyline catching pink light around 7:10; the Brooklyn tower with the sun behind it.</div></div></li>
+    <li><time>7:40</time><div><div class="t">DUMBO photos · 30 min</div><div class="d">Washington St &amp; Water St (the Manhattan Bridge frame, empty at this hour), Pebble Beach, Jane’s Carousel, Main Street Park.</div></div></li>
+    <li><time>8:15</time><div><div class="t">Breakfast in DUMBO · 45 min</div><div class="d">Coffee and pastries at % Arabica (Water St) or Brooklyn Roasting Co. (Jay St). Both are early openers, but check Saturday hours.</div></div></li>
+    <li><time>9:10</time><div><div class="t">Brooklyn Bridge Park Pier 1 → Brooklyn Heights Promenade · 45 min</div></div></li>
+    <li><time>10:00</time><div><div class="t">Books Are Magic, 122 Montague St · 30 min</div><div class="d">This is the Brooklyn Heights shop, closer than the original on Smith St. Check its opening time.</div></div></li>
+    <li class="move"><time>10:45</time><div><div class="t">Walk to DUMBO / Fulton Ferry landing → <span class="sys FERRY">NYC FERRY</span> East River route → Greenpoint · ~25 min, $4</div><div class="d">Weekend boats run about hourly, so time this to the posted departure. If you miss one, a 15-min Uber costs about $20–25.</div></div></li>
+    <li><time>11:40</time><div><div class="t">Peter Pan Donut &amp; Pastry Shop, 727 Manhattan Ave · 30 min</div><div class="d">A 1950s counter that’s cash-friendly. Get the red velvet or the honey dip.</div></div></li>
+    <li class="opt"><time>12:15</time><div><div class="t">Caffè Panna Brooklyn, 16 Norman Ave · 20 min</div><div class="d">Go here if you missed the Irving Place shop on Thursday.</div></div></li>
+    <li class="move"><time>12:40</time><div><div class="t">Walk south along Bedford Ave via McCarren Park · 30 min</div></div></li>
+    <li><time>1:15</time><div><div class="t">Edith’s Sandwich Counter, 495 Lorimer St · 45 min</div><div class="d">It’s a daytime spot. Check its closing time. Smorgasburg is the backup lunch.</div></div></li>
+    <li><time>2:15</time><div><div class="t">Smorgasburg at Marsha P. Johnson State Park · 45 min</div><div class="d">Snacks and skyline views.</div></div></li>
+    <li><time>3:10</time><div><div class="t">Domino Park, Kent Ave · 40 min</div></div></li>
+    <li class="move"><time>4:00</time><div><div class="t"><span class="sys FERRY">NYC FERRY</span> South Williamsburg → Wall St/Pier 11 · walk to WTC · <span class="sys PATH">PATH</span> → JSQ · ~70 min</div><div class="d">On weekends this is simpler than the <span class="ln lL">L</span> + PATH combination.</div></div></li>
+    <li><time>~5:15</time><div><div class="t">Home. Nap.</div></div></li>
+    <li class="opt"><time>7:30</time><div><div class="t">Hamilton Park, Jersey City + dinner nearby</div><div class="d">A pretty downtown square about 10 min by Uber. It has easy dinner options on McGinley Sq or Grove St.</div></div></li>
+  </ol>
+  <dl class="facts">
+    <div><dt>Walking</dt><dd>About 6.5 mi</dd></div>
+    <div><dt>Transit</dt><dd>PATH, NYC Ferry ×2, short Uber</dd></div>
+    <div><dt>Go City</dt><dd>None</dd></div>
+    <div><dt>Book</dt><dd>Nothing, just check ferry times</dd></div>
+    <div><dt>Skippable</dt><dd>Books Are Magic, Caffè Panna, Smorgasburg</dd></div>
+    <div><dt>Home by</dt><dd>~5:15 PM</dd></div>
+  </dl>
+  </div>
+</article>
+</section>
+
+<!-- OCT 18 -->
+<section id="d18">
+<article class="day">
+  <div class="dayhead"><span class="date">Sun Oct 18</span><h3>Checkout · Chinatown, Canal St, Little Italy, Nolita</h3><span class="who">All 7 · Airbnb checkout by 10 AM</span></div>
+  <div class="daybody">
+  <ol class="tl">
+    <li><time>8:00</time><div><div class="t">Pack, strip beds, check out</div></div></li>
+    <li class="move"><time>9:40</time><div><div class="t"><span class="sys CAR">UBER</span> 2 cars with all bags → the parents’ hotel near Grove St or JSQ PATH · 10 min</div><div class="d">The hotel holds everyone’s bags, including yours, until tonight. If there’s no hotel, use a Bounce spot near Journal Square.</div></div></li>
+    <li class="move"><time>10:15</time><div><div class="t"><span class="sys PATH">PATH</span> → WTC, then <span class="ln lN">R</span><span class="ln lN">W</span> Cortlandt St → Canal St · ~35 min</div></div></li>
+    <li class="key"><time>10:50</time><div><div class="t">Dim sum at Nom Wah Tea Parlor, 13 Doyers St · 75 min</div><div class="d">Sunday waits are real, so join the waitlist on arrival. The backup is Jing Fong (202 Centre St).</div></div></li>
+    <li><time>12:10</time><div><div class="t">Doyers St · Mott St · Columbus Park · 30 min</div></div></li>
+    <li><time>12:40</time><div><div class="t">Chinatown snack crawl · 45 min</div><div class="d">Mei Lai Wah (64 Bayard) roast-pork bun, Kam Hing (119 Baxter) sponge cake, Chinatown Ice Cream Factory (65 Bayard), Fong On (81 Division) tofu pudding.</div></div></li>
+    <li><time>1:30</time><div><div class="t">Canal Street bag shopping · 75 min</div><div class="d">Shop the stretch between Centre St and Broadway. Selling counterfeits is illegal and the back-room offers are often scams. Don’t follow anyone into a back room or down a staircase. Agree on a price, pay, and walk.</div></div></li>
+    <li><time>2:45</time><div><div class="t">Spider-Man 3 dance spot, 477 Broadway (Grand–Broome) · 10 min</div><div class="d">The film-location sites list this storefront as the spot for Peter’s strut.</div></div></li>
+    <li><time>3:00</time><div><div class="t">Little Italy: Mulberry St · Ferrara Bakery (195 Grand) cannoli · 40 min</div></div></li>
+    <li><time>3:45</time><div><div class="t">Nolita / SoHo: Softside soft serve · New York or Nowhere (250 Lafayette) · Mochidoki (176 Spring) · 60 min</div></div></li>
+    <li><time>4:50</time><div><div class="t">Harry Styles “Together, Together” pop-up, 22 E 2nd St · 30 min</div><div class="d">It’s open Wed–Sun, noon–7 PM, through Nov 1, with no reservation. It’s 12 min on foot from Lafayette St.</div></div></li>
+    <li><time>5:30</time><div><div class="t">Farewell dinner: Joe’s Shanghai (46 Bowery) soup dumplings, or Great NY Noodletown (28 Bowery) · 75 min</div></div></li>
+    <li class="move"><time>7:00</time><div><div class="t">Walk to WTC → <span class="sys PATH">PATH</span> → the hotel · ~40 min</div></div></li>
+    <li class="key"><time>8:00</time><div><div class="t">You two sleep until 2:45 AM</div><div class="d">See the <a href="#airports">EWR plan</a> for the rest of the night.</div></div></li>
+  </ol>
+  <dl class="facts">
+    <div><dt>Walking</dt><dd>About 4 mi</dd></div>
+    <div><dt>Transit</dt><dd>Uber with bags, PATH, <span class="ln lN">R</span> train</dd></div>
+    <div><dt>Go City</dt><dd>None</dd></div>
+    <div><dt>Book</dt><dd>Oct 18 hotel (and bag hold)</dd></div>
+    <div><dt>Skippable</dt><dd>Spider-Man spot, pop-up, Mochidoki</dd></div>
+    <div><dt>Home by</dt><dd>~7:40 PM at the hotel</dd></div>
+  </dl>
+  </div>
+</article>
+</section>
+
+<!-- OCT 19 -->
+<section id="d19">
+<article class="day">
+  <div class="dayhead"><span class="date">Mon Oct 19</span><h3>Departures: EWR at dawn, JFK in the evening</h3><span class="who">You two · parents + younger brother</span></div>
+  <div class="daybody">
+  <ol class="tl">
+    <li class="key"><time>2:45 AM</time><div><div class="t">You two: wake up</div></div></li>
+    <li class="move"><time>3:10 AM</time><div><div class="t"><span class="sys CAR">UBER</span> → Newark Airport <b>Terminal A</b> · ~20 min, about $35–60</div><div class="d">Schedule it in the app the night before.</div></div></li>
+    <li><time>3:35 AM</time><div><div class="t">American Airlines counters open at 3:30 AM</div><div class="d">Check bags right away. The AA bag cutoff is 45 min before departure (4:46 AM). Security opens around then.</div></div></li>
+    <li><time>5:31 AM</time><div><div class="t">AA to Chicago (arr 7:10) → 8:15 to SLC (arr 10:58)</div><div class="d">A 65-minute connection at O’Hare. Keep carry-ons small.</div></div></li>
+    <li><time>9:00</time><div><div class="t">Parents: slow breakfast near the hotel · ask for 11 AM checkout</div><div class="d">The hotel holds their bags. Take an easy stroll along the Grove St / Newport waterfront.</div></div></li>
+    <li class="move"><time>1:00 PM</time><div><div class="t">Parents leave: <span class="sys PATH">PATH</span> → 33rd St · walk to Penn · <span class="sys LIRR">LIRR</span> → Jamaica · <span class="sys AIR">AirTrain</span> → terminal</div><div class="d">About 1 h 45 min with bags, costing about $22 per person.</div></div></li>
+    <li class="key"><time>~2:45–3:15 PM</time><div><div class="t">At JFK, 3+ hrs before the 6:27 PM international flight</div><div class="d">That leaves a buffer of about 30–45 min for delays.</div></div></li>
+  </ol>
+  </div>
+</article>
+</section>
+
+<!-- GO CITY -->
+<section id="gocity">
+  <h2>Go City strategy</h2>
+  <p>I checked Go City’s New York attraction list and reservation page. All 15 of your picks are on the pass list, but several aren’t realistic for these dates.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Attraction</th><th>On Go City?</th><th>Reservation</th><th>Plan</th></tr></thead>
+    <tbody>
+      <tr><td>Empire State Building</td><td>Yes</td><td>Required</td><td>Mon 12, ~8 PM ✔︎</td></tr>
+      <tr><td>Edge</td><td>Yes</td><td>Required</td><td>Optional Sun 11 (7th choice)</td></tr>
+      <tr><td>Top of the Rock</td><td>Yes</td><td>Required</td><td>Tue 13, sunset ✔︎</td></tr>
+      <tr><td>AMNH</td><td>Yes</td><td>Not listed</td><td>Tue 13 ✔︎</td></tr>
+      <tr><td>9/11 Memorial &amp; Museum</td><td>Yes</td><td>Required</td><td>Mon 12 AM ✔︎ (closed Tuesdays)</td></tr>
+      <tr><td>Circle Line cruise</td><td>Yes</td><td>Required</td><td>Mon 12, late afternoon ✔︎</td></tr>
+      <tr><td>Statue &amp; Ellis ferry</td><td>Yes</td><td>Required, up to 7 days ahead</td><td>Fri 16, from Liberty State Park ✔︎</td></tr>
+      <tr><td>MSG tour</td><td>Yes</td><td>Check app</td><td>Skip: you’ll be inside on Wednesday, and show days are risky</td></tr>
+      <tr><td>Yankees game</td><td>Yes (grandstand; page mentions postseason)</td><td>—</td><td>Not scheduled. The Yankees clinched a Wild Card (Sep 14), so a home ALCS game during your week is possible but can’t be planned now</td></tr>
+      <tr><td>Luna Park</td><td>Yes</td><td>—</td><td>Skip: October hours are limited Halloween Harvest days, and it’s 75+ min each way</td></tr>
+      <tr><td>Butterbeer / Harry Potter NY</td><td>Yes</td><td>None</td><td>Thu 15. Pay cash, too cheap for a choice</td></tr>
+      <tr><td>St. John the Divine</td><td>Yes</td><td>—</td><td>Optional Tue 13 morning swap</td></tr>
+      <tr><td>The Rink at Rockefeller</td><td>Yes</td><td>—</td><td>Opens Oct 10, 2026. Optional Tue 13 evening</td></tr>
+      <tr><td>Intrepid</td><td>Yes</td><td>—</td><td>Optional swap for Circle Line, Mon 12</td></tr>
+      <tr><td>Perfect Picnic</td><td>Yes (pickup at 405 CPW, 10–6)</td><td>None</td><td>Optional Tue 13 with St. John the Divine</td></tr>
+    </tbody>
+  </table></div>
+  <h4>Which pass</h4>
+  <p><b>Buy the Explorer pass with 6 choices</b> for you, your husband, your parents and your younger brother. It activates on first use (Mon Oct 12) and lasts 30 days, so the Friday Statue trip is still covered, and nothing has to be crammed into consecutive days. Spend the choices on the expensive tickets: <b>9/11 Museum, Empire State, Top of the Rock, AMNH, Statue/Ellis, Circle Line</b>. Pay separately for the cheap extras (Butterbeer, Rink, Picnic).</p>
+  <p>An All-Inclusive pass only wins if you do 3+ paid attractions every day on consecutive days. Your only two dense pass days are Oct 12–13, and the Statue is on the 16th. Go City lists Explorer from $89 (2 choices) up to $299 (10), and All-Inclusive from $169 (1 day) to $414 (10 days). Sales are frequent, so price it the week you buy and compare with buying the six tickets directly (roughly $210–230 per adult at gate prices).</p>
+  <div class="flag"><b>Before you buy:</b> sunset slots at Top of the Rock and Edge sometimes carry an upgrade fee on passes. Check this in the app when you book.</div>
+</section>
+
+<!-- BOOK NOW -->
+<section id="book">
+  <h2>Reservations to make now</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>When</th><th>What</th><th>Detail</th></tr></thead>
+    <tbody>
+      <tr><td class="num">Now</td><td><b>Hotel, night of Oct 18</b></td><td>For your parents and younger brother. Get one near Grove St or Journal Square PATH, and ask about bag holding and an 11 AM checkout on Oct 19. Consider a room for you two to sleep in until 3 AM.</td></tr>
+      <tr><td class="num">Now</td><td><b>Maddy Rose</b>, Fri Oct 16, 6:30 PM, party of 7</td><td>OpenTable or 201-395-0300. Mention the birthday.</td></tr>
+      <tr><td class="num">Now</td><td>Commerce Inn, Thu Oct 15, ~5:30 PM</td><td>On Resy. A party of 7 is difficult, so be ready to split the table.</td></tr>
+      <tr><td class="num">Now</td><td>Village Vanguard, Thu Oct 15, 8 PM set</td><td>Book on villagevanguard.com.</td></tr>
+      <tr><td class="num">Now</td><td>Buy Go City (Explorer 6)</td><td>Then reserve inside the app ↓</td></tr>
+      <tr><td class="num">ASAP</td><td>Top of the Rock, Tue 13, 5:30–5:45 PM</td><td>The most competitive slot of the trip.</td></tr>
+      <tr><td class="num">ASAP</td><td>9/11 Museum, Mon 12, 9:45 AM · Circle Line, Mon 12, latest PM · Empire State, Mon 12, ~8 PM</td><td>Go City app.</td></tr>
+      <tr><td class="num">Oct 9</td><td>Statue &amp; Ellis, Fri 16, ~9:30 AM, <b>Liberty State Park</b> departure</td><td>Go City allows booking 7 days ahead. Your older brother and his wife buy regular tickets at statuecitycruises.com (they can book now).</td></tr>
+      <tr><td class="num">Week of</td><td>Luggage storage</td><td>Oct 11 near Penn / Herald Sq (5 people, until ~9 PM) · Oct 14 same spot for your older brother.</td></tr>
+      <tr><td class="num">Oct 18</td><td>Schedule the Uber for 3:10 AM</td><td>Home address = the hotel → EWR Terminal A.</td></tr>
+      <tr><td class="num">Optional</td><td>Morgan Library (Oct 14) · Edge (Oct 11) · Vessel climb</td><td>Timed tickets online.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- AIRPORTS -->
+<section id="airports">
+  <h2>Airport arrival &amp; departure plans</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>Oct 11 · You two, JFK T5 → Manhattan</h3>
+      <ul class="clean">
+        <li>Take the AirTrain from T5 (JetBlue’s terminal) to <b>Jamaica</b>. It costs $8.50, paid on exit.</li>
+        <li>At Jamaica, take the LIRR to <b>Penn Station</b> (~20 min). Or take the <span class="ln lA">E</span> to 34 St–Penn (~50 min, $3).</li>
+        <li>Store bags near the 33rd St PATH. You’ll leave from there tonight.</li>
+        <li>Don’t use a yellow cab or Uber in the morning. It’s $80–110 and gains you nothing.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Oct 11 · Parents + brother, JFK T4</h3>
+      <ul class="clean">
+        <li>Land 2:10 PM. Immigration and bags take about 45–90 min, so they’re <b>ready around 3:30–4:00 PM</b>.</li>
+        <li><b>Meet in Manhattan, not at JFK.</b> A round trip to JFK costs you about 2.5 hours, and their route to Jersey City goes through Penn Station anyway.</li>
+        <li>AirTrain from T4 to Jamaica, then the LIRR to <b>Penn Station</b>. Meet at the clock in Moynihan Train Hall around 4:45–5:15.</li>
+        <li>If they feel unsure with the bags, a flat-fare yellow cab to Moynihan is $70 plus tolls, congestion fee and tip (about $95–110).</li>
+        <li>Everyone collects bags about 8:30 PM, takes the PATH from 33rd St to Journal Square, then 2 Ubers to the Airbnb.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Oct 14 · Older brother &amp; wife, JFK ~6:30 AM</h3>
+      <ul class="clean">
+        <li>AirTrain to Jamaica, then the LIRR to Penn Station. They reach Penn around 8:15–8:45.</li>
+        <li>Drop bags at the family’s storage spot and have breakfast at Moynihan.</li>
+        <li>Meet the family at 9:10 AM at the Macy’s corner (34th &amp; Broadway).</li>
+        <li>At 3 PM they collect bags and ride the PATH to JSQ with your parents.</li>
+        <li>Alternative: go straight to the Airbnb (PATH 33rd → JSQ → Uber), about 2 hours from landing.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Oct 19 · You two, EWR 5:31 AM</h3>
+      <ul class="clean">
+        <li><b>American Airlines is in EWR Terminal A.</b> Its ticket counters open at <b>3:30 AM</b> (aa.com), and the bag cutoff is 45 min before departure.</li>
+        <li><b>Arriving at midnight doesn’t make sense.</b> Counters and security are closed until about 3:30–4:00, so you’d sit landside for 3.5 hours with little open. It only makes sense if you have nowhere else to be.</li>
+        <li><b>My recommendation:</b> sleep in a Jersey City hotel room (shared with or next to your parents). Leave at 3:10 AM and arrive at 3:35 AM.</li>
+        <li><b>Transport:</b> Uber or Lyft, about 20 min and $35–60. Public transit at 3 AM (PATH to Newark Penn, then a sparse overnight train or bus, then the AirTrain) isn’t realistic.</li>
+        <li>If you do the midnight plan anyway, leave Jersey City around 11:30 PM by Uber.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Oct 19 · Parents + brother, JFK 6:27 PM</h3>
+      <ul class="clean">
+        <li>Bags stay at the hotel after checkout. If there’s no hotel, use Bounce near Grove St PATH.</li>
+        <li><b>Leave by 1:00 PM</b> (1:15 at the latest): PATH to 33rd St, LIRR from Penn to Jamaica, AirTrain. That’s about 1 h 45 min.</li>
+        <li>They arrive around 2:45–3:15 PM, which is 3+ hours before an international departure, with 30–45 min of buffer.</li>
+        <li>An Uber costs about $110–150 and takes 60–100 min in Monday traffic, which is less predictable than the train.</li>
+        <li><b>Check the terminal on the booking.</b> JFK is mid-rebuild, with the New Terminal One opening in phases, and some Mexico flights may move.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSIT -->
+<section id="transit">
+  <h2>Transportation cheat sheet</h2>
+  <div class="grid2">
+    <div class="card">
+      <h4 style="margin-top:0">Home base → the city</h4>
+      <p>487 Bergen Ave is in Bergen-Lafayette. The nearest PATH is <b>Journal Square</b>. I estimate it at 1–1.5 mi (~25 min on foot), but check the exact walk in Google Maps. NJ Transit buses <b>80 / 87</b> run along Bergen Ave toward Journal Square, and an Uber is about 5 min and $8–12. Use Uber after dark or with bags.</p>
+      <h4>PATH lines you’ll use</h4>
+      <ul class="clean">
+        <li><b>JSQ–33rd St</b> (weekdays): Grove St, Christopher St, 9th, 14th, 23rd, 33rd (Herald Sq). About 25 min.</li>
+        <li><b>JSQ–33rd via Hoboken</b> runs weekends and late nights. It takes about 35–40 min.</li>
+        <li><b>Newark–WTC</b> runs 24/7: JSQ → Grove St → Exchange Pl → WTC, about 15 min.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 style="margin-top:0">Fares (2026)</h4>
+      <table>
+        <tbody>
+          <tr><td>Subway / local bus</td><td class="num">$3.00</td></tr>
+          <tr><td>OMNY weekly cap (subway + bus)</td><td class="num">$35</td></tr>
+          <tr><td>PATH</td><td class="num">$3.25</td></tr>
+          <tr><td>AirTrain JFK</td><td class="num">$8.50</td></tr>
+          <tr><td>LIRR Jamaica ↔ Penn (approx.)</td><td class="num">$5–11</td></tr>
+          <tr><td>NYC Ferry</td><td class="num">~$4</td></tr>
+        </tbody>
+      </table>
+      <p class="muted" style="margin-top:8px;font-size:13px">Each adult should tap their own card or phone. The OMNY weekly cap only tracks one card per person, and PATH doesn’t count toward it.</p>
+    </div>
+  </div>
+  <h4>When Uber / Lyft is worth it</h4>
+  <ul class="clean">
+    <li>Oct 11 and Oct 18 with suitcases (short hops only, from Journal Square or to the hotel).</li>
+    <li>Oct 16, all day. Everything is in Liberty State Park and people are dressed up.</li>
+    <li>After midnight on Oct 14, from Journal Square home. Before 6 AM on Oct 17, to Journal Square.</li>
+    <li>3:10 AM on Oct 19 to EWR.</li>
+    <li>With 7 people you always need <b>2 cars</b>, because an UberXL seats 6.</li>
+  </ul>
+</section>
+
+<!-- COSTS -->
+<section id="costs">
+  <h2>Estimated transportation costs</h2>
+  <p class="muted">Per person unless noted. Ride-share prices are estimates, and surge pricing can double them.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Day</th><th>Transit / person</th><th>Group ride-share</th></tr></thead>
+    <tbody>
+      <tr><td>Sun 11</td><td class="num">~$20 (AirTrain + LIRR + subway + PATH)</td><td class="num">~$25 (2 cars from JSQ)</td></tr>
+      <tr><td>Mon 12</td><td class="num">~$13</td><td class="num">—</td></tr>
+      <tr><td>Tue 13</td><td class="num">~$13</td><td class="num">—</td></tr>
+      <tr><td>Wed 14</td><td class="num">~$10 (brother +$15 airport)</td><td class="num">~$12 late Uber</td></tr>
+      <tr><td>Thu 15</td><td class="num">~$7</td><td class="num">—</td></tr>
+      <tr><td>Fri 16</td><td class="num">$0 (ferry on pass)</td><td class="num">~$90–140 (6 short rides × 2 cars)</td></tr>
+      <tr><td>Sat 17</td><td class="num">~$15 (PATH + 2 ferries)</td><td class="num">~$20</td></tr>
+      <tr><td>Sun 18</td><td class="num">~$10</td><td class="num">~$40 (bags to hotel)</td></tr>
+      <tr><td>Mon 19</td><td class="num">Parents ~$22</td><td class="num">~$35–60 (EWR)</td></tr>
+      <tr><td><b>Trip total</b></td><td class="num"><b>~$100–110 per person</b></td><td class="num"><b>~$250–350 for the group</b></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- DIDN'T FIT -->
+<section id="nofit">
+  <h2>Places that didn’t fit</h2>
+  <ul class="clean">
+    <li><b>Fort Tryon Park / The Cloisters.</b> It’s at the top of Manhattan (<span class="ln lA">A</span> to 190 St), about 60 min from anything else in the plan. Only worth it as a dedicated half-day, for example if you drop the Met + AMNH morning.</li>
+    <li><b>Luna Park, Coney Island.</b> It’s 75–90 min each way and only open on some October days. Skip it.</li>
+    <li><b>Yankees.</b> It depends on the playoffs, and Oct 14 is taken. If the Yankees host an ALCS game on a free evening (12, 13, 15 or 17), it could replace that evening’s plan.</li>
+    <li><b>MSG tour.</b> It’s possible Thu 15 or Sun 18 morning, but low value after seeing a show inside.</li>
+    <li><b>Mimi’s.</b> I couldn’t confirm which place you mean. Mimi’s Hummus (245 E 14th) is 8 min from Union Square if that’s it.</li>
+    <li><b>Edith’s West Village</b> (64 Charles St) is optional on Thu 15. The Williamsburg original is scheduled Sat 17.</li>
+    <li><b>Softside UWS</b> (with Upside Pizza) is optional near AMNH on Tue 13. Nolita is scheduled Sun 18.</li>
+  </ul>
+</section>
+
+<!-- RAIN -->
+<section id="rain">
+  <h2>Rainy-day alternatives</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>If it rains on…</th><th>Do this instead</th></tr></thead>
+    <tbody>
+      <tr><td>Sun 11</td><td>Skip the High Line. Chelsea Market → Pier 57 food hall (indoors) → Macy’s → Moynihan.</td></tr>
+      <tr><td>Mon 12</td><td>Swap the Circle Line for the Intrepid (indoors, same pier).</td></tr>
+      <tr><td>Tue 13</td><td>Skip the park walk and stay longer at the Met (it’s raining, so it’s worth it). Take the M1–M4 bus down Madison Ave to Rockefeller. If it’s cloudy, move Top of the Rock to night.</td></tr>
+      <tr><td>Thu 15</td><td>Most stops are indoors (Harry Potter, LEGO, Strand, bakeries, jazz). Just shorten Washington Sq and Perry St.</td></tr>
+      <tr><td>Fri 16</td><td>The ferries run rain or shine. In a real storm, move the Statue to Sun 18 morning (bags at the hotel) and spend the day at the Liberty Science Center next door.</td></tr>
+      <tr><td>Sat 17</td><td>Swap with Thu 15 (sunrise on Thursday instead). If both are wet, skip sunrise and do DUMBO at 10 AM.</td></tr>
+      <tr><td>Sun 18</td><td>Dim sum and shops are indoors. Add Westfield WTC / the Oculus and SoHo stores.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- FIXES -->
+<section id="fixes">
+  <h2>Corrections to your list</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>You wrote</th><th>What I found</th></tr></thead>
+    <tbody>
+      <tr><td>“Grand Hotel”</td><td><b>Unverified.</b> Most likely <b>The Plaza</b> (Home Alone 2), which is scheduled Tue 13. Other candidates: the Lotte New York Palace (Gossip Girl), which is on your Oct 14 route, or the old Grand Hyatt at Grand Central, which is slated for demolition. Tell me if you meant something else.</td></tr>
+      <tr><td>“Mure Grand”</td><td><b>Can’t identify it.</b> Guesses: Moynihan Train Hall (the grand hall by MSG, already in the plan), Grand Central Madison, or Mercer Labs. What’s the context (a TikTok, a movie)?</td></tr>
+      <tr><td>“Fairfield”</td><td><b>Can’t identify it</b> in NYC. It could be the Fairfield Inn, a town in NJ or CT, or a misremembered name. Please send a link or clue.</td></tr>
+      <tr><td>“Champ’s”</td><td>Probably <b>Champs Diner</b> (vegan, 197 Meserole St, Williamsburg). It <b>closed in early 2026</b> and is reopening as <b>Ro’s Diner</b> with the same chef. Confirm it’s open before going. It’s near Sat 17’s route. If you meant Champs Sports, there are stores near Times Sq and 34th St.</td></tr>
+      <tr><td>Shop &amp; Go pop-up</td><td><b>Couldn’t find it</b> online. You may mean the Harry Styles <b>“Together, Together” pop-up</b> at 22 E 2nd St (Wed–Sun, noon–7, until Nov 1), which is scheduled Sun 18.</td></tr>
+      <tr><td>Ralph Lauren coffee truck</td><td><b>Ralph’s Coffee truck</b>, listed at Rockefeller Center (5th Ave, 50th–51st), daily 8 AM–6 PM. No seasonal dates are published. Scheduled Wed 14.</td></tr>
+      <tr><td>Café Panna</td><td>Spelled <b>Caffè Panna</b>: 77 Irving Pl, plus a Greenpoint shop.</td></tr>
+      <tr><td>Spider-Man 3 dance</td><td>A film-location site places the strut at <b>477 Broadway</b>, SoHo. The jazz-club dance was filmed on a Hollywood backlot.</td></tr>
+      <tr><td>Carrie’s apartment</td><td>66 Perry St. The owner chained the stoop and applied for a gate. Take sidewalk photos only.</td></tr>
+      <tr><td>The Met “free evening”</td><td>No free evening for visitors. It’s open until 9 PM Fri/Sat, and adults pay $30.</td></tr>
+      <tr><td>The Rink</td><td>Open from Oct 10, 2026. Go City showed it as “closed for the season” when I checked, which was pre-opening.</td></tr>
+      <tr><td>Hamilton Park</td><td>This is the Jersey City park (downtown), not Manhattan. Scheduled Sat 17 evening.</td></tr>
+      <tr><td>Primark</td><td>The Manhattan flagship opened May 2026 at 150 W 34th St. Scheduled Wed 14.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- MAPS -->
+<section id="maps">
+  <h2>Google Maps routes, stop by stop</h2>
+  <p class="muted">Enter these in order in Google Maps (Directions → add stops). Maps allows 10 stops per route, so the long days are split in two.</p>
+  <div class="grid2" id="routes"></div>
+</section>
+
+<section>
+  <h2>Sources checked</h2>
+  <ul class="clean" style="font-size:13px">
+    <li><a href="https://www.timeout.com/newyork/news/harry-styles-at-madison-square-garden-2026-stage-times-last-minute-tickets-and-ultimate-guide-082626">Time Out: Harry Styles at MSG 2026 stage times</a></li>
+    <li><a href="https://gocity.com/en/new-york/reservations">Go City New York reservations</a> · <a href="https://gocity.com/en/new-york/attractions">attraction list</a> · <a href="https://citypassusa.com/new-york-city-pass-price">pass prices summary</a></li>
+    <li><a href="https://www.metmuseum.org/plan-your-visit">The Met: hours &amp; admission</a> · <a href="https://www.911memorial.org/visit">9/11 Memorial &amp; Museum hours</a></li>
+    <li><a href="https://www.aa.com/i18n/travelInformation/destinationInformation/ewr-airport.html">American Airlines at EWR (Terminal A, counters 3:30 AM)</a></li>
+    <li><a href="https://en.wikipedia.org/wiki/New_York_City_transit_fares">2026 NYC transit fares</a> · <a href="https://www.newyorkferryguide.com/east-river-ferry/">NYC Ferry East River route</a></li>
+    <li><a href="https://www.hobokengirl.com/mediterranean-restaurant-jersey-city-maddy-rose/">Maddy Rose at Liberty House</a> · <a href="https://statuecitycruises.com/plan-your-visit/schedule">Statue City Cruises schedule</a></li>
+    <li><a href="https://www.rockefellercenter.com/tickets/the-rink-at-rockefeller-center">The Rink (opens Oct 10, 2026)</a> · <a href="https://www.rockefellercenter.com/dine/ralph-s-coffee-truck">Ralph’s Coffee truck</a></li>
+    <li><a href="https://secretnyc.co/harry-styles-together-together-pop-up-shop-nyc/">Harry Styles pop-up</a> · <a href="https://34thstreet.org/shop-eat/primark">Primark Herald Square</a> · <a href="https://brooklynslifestyle.com/smorgasburg-nyc/">Smorgasburg 2026</a></li>
+    <li><a href="https://www.brooklynvegan.com/vegan-mainstay-champs-diner-to-reopen-as-ros-diner/">Champs Diner → Ro’s Diner</a> · <a href="https://globalfilmlocations.net/2022/11/28/spider-man-3-2007-film-locations/">Spider-Man 3 locations</a> · <a href="https://www.mlb.com/news/2026-postseason-teams">MLB 2026 postseason teams</a></li>
+  </ul>
+  <p class="muted" style="font-size:13px">Sunrise and sunset times are computed for lower Manhattan. Restaurant and shop hours change often, so check anything marked as unverified the day before.</p>
+</section>
+</div>
+
+<script>
+const R = [
+ ["Sun 11",["JFK Terminal 5","Jamaica Station","Moynihan Train Hall","Vessel, Hudson Yards","High Line 34th St entrance","Chelsea Market","Pier 57","Little Island","Times Square","BCD Tofu House, 5 W 32nd St"]],
+ ["Sun 11 · evening",["33rd Street PATH Station","Journal Square PATH","487 Bergen Ave, Jersey City"]],
+ ["Mon 12",["Journal Square PATH","9/11 Memorial & Museum","Oculus","Eataly NYC Downtown","New York Stock Exchange","Charging Bull","Battery Park","Circle Line Pier 83","Empire State Building","33rd Street PATH Station"]],
+ ["Tue 13 · morning",["Journal Square PATH","33rd Street PATH Station","The Metropolitan Museum of Art","Belvedere Castle","American Museum of Natural History","Levain Bakery, 167 W 74th St"]],
+ ["Tue 13 · afternoon",["Strawberry Fields","Bethesda Fountain","Bow Bridge","Literary Walk","Wollman Rink","Gapstow Bridge","The Plaza Hotel","Top of the Rock","33rd Street PATH Station"]],
+ ["Wed 14",["33rd Street PATH Station","Macy's Herald Square","Grand Central Terminal","The Morgan Library & Museum","New York Public Library Stephen A. Schwarzman Building","Bryant Park","St. Patrick's Cathedral","Nintendo New York","LEGO Store Rockefeller Center"]],
+ ["Wed 14 · concert",["Primark, 150 W 34th St","I LOVE NY, 1282 Broadway","Moynihan Train Hall","Koreatown, W 32nd St","Madison Square Garden 7th Ave entrance","33rd Street PATH Station"]],
+ ["Thu 15 · part 1",["23rd Street PATH Station","Flatiron Building","Harry Potter New York","LEGO Store Flatiron","Somedays Bakery, 297 Park Ave S","Caffè Panna, 77 Irving Pl","Strand Book Store","Washington Square Park"]],
+ ["Thu 15 · part 2",["Joe's Pizza, 7 Carmine St","Magnolia Bakery, 401 Bleecker St","66 Perry St","90 Bedford St","The Commerce Inn","Village Vanguard","Christopher Street PATH Station"]],
+ ["Fri 16",["487 Bergen Ave, Jersey City","Liberty State Park Ferry Terminal","Ellis Island","Liberty Island","Empty Sky Memorial","487 Bergen Ave, Jersey City","Maddy Rose, 76 Audrey Zapp Dr"]],
+ ["Sat 17 · part 1",["Journal Square PATH","World Trade Center PATH","Brooklyn Bridge Pedestrian Entrance, Centre St","Washington St & Water St, Brooklyn","Pebble Beach, Brooklyn Bridge Park","Brooklyn Heights Promenade","Books Are Magic, 122 Montague St","DUMBO/Fulton Ferry NYC Ferry"]],
+ ["Sat 17 · part 2",["Greenpoint NYC Ferry","Peter Pan Donut & Pastry Shop","Caffè Panna, 16 Norman Ave","Edith's Sandwich Counter, 495 Lorimer St","Smorgasburg Williamsburg","Domino Park","South Williamsburg NYC Ferry","Pier 11/Wall St","World Trade Center PATH"]],
+ ["Sun 18",["Canal St Station","Nom Wah Tea Parlor","Columbus Park","Mei Lai Wah, 64 Bayard St","Canal Street & Broadway","477 Broadway","Ferrara Bakery","New York or Nowhere, 250 Lafayette St","Mochidoki, 176 Spring St","22 E 2nd St"]],
+ ["Sun 18 · dinner",["Joe's Shanghai, 46 Bowery","World Trade Center PATH","Grove Street PATH"]],
+ ["Mon 19 · parents",["Grove Street PATH","33rd Street PATH Station","Penn Station LIRR","Jamaica Station","JFK Airport"]]
+];
+const host=document.getElementById('routes');
+R.forEach(([day,stops],i)=>{
+  const c=document.createElement('div');c.className='card';
+  const h=document.createElement('h3');h.textContent=day;c.appendChild(h);
+  const ol=document.createElement('ol');ol.className='route';
+  stops.forEach(s=>{const li=document.createElement('li');li.textContent=s;ol.appendChild(li)});
+  c.appendChild(ol);
+  const a=document.createElement('a');
+  a.href='https://www.google.com/maps/dir/'+stops.map(s=>encodeURIComponent(s+', New York')).join('/');
+  if(/Bergen|Liberty State|Empty Sky|Maddy|Journal|Grove/.test(stops.join())) a.href='https://www.google.com/maps/dir/'+stops.map(s=>encodeURIComponent(s)).join('/');
+  a.target='_blank';a.rel='noopener';a.textContent='Open in Google Maps ↗';a.style.fontSize='13px';a.style.display='inline-block';a.style.marginTop='8px';a.style.marginRight='10px';
+  c.appendChild(a);
+  const b=document.createElement('button');b.className='copy';b.type='button';b.id='copy'+i;b.textContent='Copy stops';
+  b.addEventListener('click',()=>{const txt=stops.map((s,n)=>(n+1)+'. '+s).join('\n');
+    navigator.clipboard.writeText(txt).then(()=>{b.textContent='Copied'},()=>{const r=document.createRange();r.selectNodeContents(ol);const sel=getSelection();sel.removeAllRanges();sel.addRange(r);b.textContent='Selected, press copy'});});
+  c.appendChild(b);
+  host.appendChild(c);
+});
+</script>
